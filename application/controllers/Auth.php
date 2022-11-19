@@ -95,22 +95,30 @@ class Auth extends CI_Controller
 		{
 			// the user is not logging in so display the login page
 			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			// $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			$this->data['identity'] = [
 				'name' => 'identity',
 				'id' => 'identity',
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('identity'),
+				'class' => 'form-control',
+				'placeholder' => 'Email',
+				'autofocus' => 'on',
+				'autocomplete' => 'off',
 			];
 
 			$this->data['password'] = [
 				'name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
+				'class'	=> 'form-control',
+				'placeholder'	=> 'Password'
 			];
 
+			$this->load->view('layouts/header_login.php');
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
+			$this->load->view('layouts/footer_login.php');
 		}
 	}
 
