@@ -55,7 +55,10 @@ class Auth extends CI_Controller
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			$this->load->view('layouts/header.php');
+			$this->load->view('layouts/sidebar.php');
+			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			$this->load->view('layouts/footer.php');
 		}
 	}
 
@@ -95,7 +98,7 @@ class Auth extends CI_Controller
 		{
 			// the user is not logging in so display the login page
 			// set the flash data error message if there is one
-			// $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			$this->data['identity'] = [
 				'name' => 'identity',
@@ -116,7 +119,7 @@ class Auth extends CI_Controller
 				'placeholder'	=> 'Password'
 			];
 
-			$this->load->view('layouts/header_login.php');
+			$this->load->view('layouts/header_login.php', $this->data);
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
 			$this->load->view('layouts/footer_login.php');
 		}
