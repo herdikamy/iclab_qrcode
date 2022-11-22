@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2022 at 01:26 PM
+-- Generation Time: Nov 22, 2022 at 07:03 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -44,6 +44,30 @@ INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hari`
+--
+
+CREATE TABLE `hari` (
+  `id_hari` int(11) NOT NULL,
+  `nama_hari` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jadwal_piket`
+--
+
+CREATE TABLE `jadwal_piket` (
+  `id_jadwal` int(11) NOT NULL,
+  `id_users` int(11) NOT NULL,
+  `id_hari` int(11) NOT NULL,
+  `id_sesi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login_attempts`
 --
 
@@ -53,6 +77,77 @@ CREATE TABLE `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `login_attempts`
+--
+
+INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
+(1, '::1', 'ada', 1669044422),
+(2, '::1', 'adasd', 1669046042),
+(3, '::1', 'adsaasd', 1669046324),
+(4, '::1', 'adsaasd', 1669046331),
+(5, '::1', 'adsaasd', 1669046344),
+(6, '::1', 'asdasd', 1669046348),
+(7, '::1', 'asdad', 1669046358),
+(8, '::1', 'adasd', 1669046370),
+(9, '::1', 'adasdads', 1669047114),
+(10, '::1', 'adad', 1669047136),
+(11, '::1', 'asasd', 1669047156),
+(12, '::1', 'asdasd', 1669047173),
+(13, '::1', 'dadasd', 1669047206),
+(14, '::1', 'asdasd', 1669047209),
+(15, '::1', 'adads', 1669047229),
+(16, '::1', 'assd', 1669048859),
+(17, '::1', 'adads', 1669048943),
+(18, '::1', 'asdasd', 1669049164),
+(19, '::1', 'adsdasd', 1669049240),
+(20, '::1', 'adasd', 1669049306),
+(21, '::1', 'asdasd', 1669049340),
+(22, '::1', 'aasd', 1669049382),
+(23, '::1', 'adsasd', 1669049415),
+(24, '::1', 'asdasd', 1669049479),
+(25, '::1', 'asdad', 1669049511),
+(26, '::1', 'adsda', 1669049750),
+(27, '::1', 'asdad', 1669049780),
+(28, '::1', 'adasd', 1669049823),
+(29, '::1', 'asasd', 1669049864),
+(30, '::1', 'adasd', 1669049929),
+(31, '::1', 'asdasd', 1669049976),
+(32, '::1', 'assad', 1669049992),
+(33, '::1', 'adads', 1669050010),
+(34, '::1', 'asadds', 1669050063),
+(35, '::1', 'adasd', 1669050070),
+(36, '::1', 'asdads', 1669050078),
+(37, '::1', 'asdsd', 1669050204),
+(38, '::1', 'sdsa', 1669050213),
+(39, '::1', 'asad', 1669050239),
+(40, '::1', 'adsadda', 1669050258),
+(41, '::1', 'asdds', 1669050288),
+(42, '::1', 'adsd', 1669050337),
+(43, '::1', 'asdad', 1669050346),
+(44, '::1', 'sasdasas', 1669050437),
+(45, '::1', 'asdasd', 1669050516),
+(46, '::1', 'asdads', 1669050535),
+(47, '::1', 'asdads', 1669050558),
+(48, '::1', 'adasd', 1669050564),
+(49, '::1', 'adasd', 1669050577),
+(50, '::1', 'asdasd', 1669050583),
+(51, '::1', 'adas', 1669050592),
+(52, '::1', 'asdsad', 1669050640);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sesi`
+--
+
+CREATE TABLE `sesi` (
+  `id_sesi` int(11) NOT NULL,
+  `nama_sesi` varchar(256) NOT NULL,
+  `jam_mulai` time NOT NULL,
+  `jam_berakhir` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -87,7 +182,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$10$vY5Guf32qFYGfvfFxWnef.Ea3ELHwvh2vHXCQalQPk85ea8ET7F/O', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1668894608, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '127.0.0.1', 'administrator', '$2y$10$vY5Guf32qFYGfvfFxWnef.Ea3ELHwvh2vHXCQalQPk85ea8ET7F/O', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1669092592, 1, 'Admin', 'istrator', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -120,10 +215,32 @@ ALTER TABLE `groups`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hari`
+--
+ALTER TABLE `hari`
+  ADD PRIMARY KEY (`id_hari`);
+
+--
+-- Indexes for table `jadwal_piket`
+--
+ALTER TABLE `jadwal_piket`
+  ADD PRIMARY KEY (`id_jadwal`),
+  ADD KEY `id_users` (`id_users`),
+  ADD KEY `id_hari` (`id_hari`),
+  ADD KEY `id_sesi` (`id_sesi`),
+  ADD KEY `id_users_2` (`id_users`,`id_hari`,`id_sesi`);
+
+--
 -- Indexes for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sesi`
+--
+ALTER TABLE `sesi`
+  ADD PRIMARY KEY (`id_sesi`);
 
 --
 -- Indexes for table `users`
@@ -155,10 +272,28 @@ ALTER TABLE `groups`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `hari`
+--
+ALTER TABLE `hari`
+  MODIFY `id_hari` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jadwal_piket`
+--
+ALTER TABLE `jadwal_piket`
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `sesi`
+--
+ALTER TABLE `sesi`
+  MODIFY `id_sesi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -175,6 +310,18 @@ ALTER TABLE `users_groups`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `hari`
+--
+ALTER TABLE `hari`
+  ADD CONSTRAINT `hari_ibfk_1` FOREIGN KEY (`id_hari`) REFERENCES `jadwal_piket` (`id_hari`);
+
+--
+-- Constraints for table `sesi`
+--
+ALTER TABLE `sesi`
+  ADD CONSTRAINT `sesi_ibfk_1` FOREIGN KEY (`id_sesi`) REFERENCES `jadwal_piket` (`id_sesi`);
 
 --
 -- Constraints for table `users_groups`
